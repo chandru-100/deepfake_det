@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-gray-900 font-sans antialiased overflow-x-hidden min-h-screen;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white border border-gray-200 rounded-2xl shadow-sm;
+  }
+  .text-gradient {
+    @apply text-primary font-bold;
+  }
+}
+
+/* Custom Scanner Animation */
+@keyframes scan-line {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+.scanner-overlay {
+  background: linear-gradient(to bottom, transparent, rgba(37, 99, 235, 0.2) 50%, transparent);
+  animation: scan-line 2s linear infinite;
+  height: 20%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
