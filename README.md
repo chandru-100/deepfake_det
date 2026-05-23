@@ -44,6 +44,11 @@ cd frontend
 npm install
 ```
 
+Create a `.env` file in the `frontend/` directory and add your Google OAuth Client ID (used for Admin Login):
+```env
+VITE_GOOGLE_CLIENT_ID=your_google_client_id_here
+```
+
 ## 🏃‍♂️ Running the Application
 
 **Start the Backend Server:**
@@ -66,3 +71,18 @@ The final Authenticity Score is calculated using a 60/40 weighted split between 
 * **75% - 84%**: Almost Real ✅
 * **45% - 74%**: Suspicious ⚠️
 * **0% - 44%**: Fake ❌
+
+## 🗄️ Switching to MySQL (XAMPP)
+By default, this application uses a zero-configuration **SQLite3** database (`database.sqlite`). If you prefer to use a full **MySQL** server via XAMPP, follow these steps:
+
+1. Open XAMPP and start the **Apache** and **MySQL** modules.
+2. Go to `http://localhost/phpmyadmin` and create a new database named `deepshield_db`.
+3. In `backend/.env`, add your MySQL credentials:
+   ```env
+   DB_HOST=localhost
+   DB_USER=root
+   DB_PASSWORD=
+   DB_NAME=deepshield_db
+   ```
+4. In `backend/database.js`, replace the SQLite logic with the `mysql2` package.
+   *Run `npm install mysql2` in your backend folder, and rewrite `database.js` to connect to MySQL using standard `mysql.createPool()` commands.*
